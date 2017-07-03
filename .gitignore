@@ -1,0 +1,11 @@
+/vendor/
+*.php~
+cs_fixer_tmp*
+composer.lock
+composer.phar
+.php_cs*
+project.*
+COMMANDS.md
+/var/
+/tests/SinSquare/Doctrine/Tests/Resources/Cache
+/tests/SinSquare/Doctrine/Tests/Resources/Proxy

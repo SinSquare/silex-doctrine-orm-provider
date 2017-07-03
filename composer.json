@@ -1,0 +1,30 @@
+{
+    "name": "sinsquare/silex-doctrine-orm-provider",
+    "description": "Doctrine ORM provider for Silex framework",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "~5.4|~7.0",
+        "doctrine/orm": "~2.0",
+        "silex/silex": "~2.0",
+        "sinsquare/silex-doctrine-cache-provider": "1.*",
+        "symfony/validator": "~2.8|^3.0",
+        "symfony/doctrine-bridge": "~2.8|^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "friendsofphp/php-cs-fixer": "^2.0"
+    },
+    "autoload": {
+        "psr-4": { "SinSquare\\Doctrine\\": "src/Sins/Doctrine" }
+    },
+    "autoload-dev": {
+        "psr-4": { "SinSquare\\Doctrine\\Tests\\": "tests/SinSquare/Doctrine/Tests" }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

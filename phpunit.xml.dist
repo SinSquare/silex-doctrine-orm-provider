@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd" 
+	backupGlobals="false" 
+	colors="true" 
+	bootstrap="vendor/autoload.php"
+>
+   <testsuites>
+      <testsuite name="Pimple Test Suite">
+         <directory>./tests/SinSquare/Doctrine/Tests</directory>
+         <exclude>./tests/SinSquare/Doctrine/Tests/Resources</exclude>
+      </testsuite>
+   </testsuites>
+
+   <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+         <directory suffix=".php">./src/</directory>
+      </whitelist>
+   </filter>
+</phpunit>
