@@ -9,3 +9,4 @@ COMMANDS.md
 /var/
 /tests/SinSquare/Doctrine/Tests/Resources/Cache
 /tests/SinSquare/Doctrine/Tests/Resources/Proxy
+/tests/SinSquare/Doctrine/Tests/Resources/db1.db
