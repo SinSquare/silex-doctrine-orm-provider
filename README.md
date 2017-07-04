@@ -15,7 +15,7 @@ With composer :
     }
 }
 ```
-Registering the prvoders
+Registering the providers
 ====
 
 - If you only need the ORM without validation and web profiler
@@ -34,7 +34,7 @@ $application->register(new DoctrineCacheServiceProvider());
 $application->register(new DoctrineOrmServiceProvider());
 ```
 
-- If you only need the the ORM validation (UniqueEntity)
+- If you only need the ORM validation (UniqueEntity)
 ```php
 //Register all the providers for the ORM
 
@@ -61,7 +61,7 @@ $application->register(new DoctrineOrmWebProfilerProvider());
 Configuration
 ====
 
-The configuration of the ORM must be set in $application['doctrine.orm.options'], and it must exist before registering the profvider.
+The configuration of the ORM must be set in $application['doctrine.orm.options'], and it must exist before registering the provider.
 
 A basic configuration scheme:
 ```php
