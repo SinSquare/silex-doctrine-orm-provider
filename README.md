@@ -1,6 +1,8 @@
 Doctrine ORM provider for Silex framework
 =======
 
+[![Build Status](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider.svg?branch=master)](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider)
+
 Installation
 ============
 
@@ -16,4 +18,3 @@ With composer :
 
 Usage
 =====
-
