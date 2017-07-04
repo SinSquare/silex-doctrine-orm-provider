@@ -110,7 +110,6 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
                 throw new \LogicException(sprintf("There is no cache registered with the name '%s'."));
             }
 
-            $cacheNameKey = $cacheName.'_cache';
             $cacheInstanceKey = 'doctrine.orm.cache.instances.'.$cacheName;
 
             if (isset($app[$cacheInstanceKey])) {
@@ -242,7 +241,7 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
             return $app[$mappingName]($options, $config);
         });
 
-        $app['doctrine.orm.mappingdriver._annotation'] = $app->protect(function ($options, $config) {
+        $app['doctrine.orm.mappingdriver._annotation'] = $app->protect(function ($options, Configuration $config) {
             $useSimpleAnnotationReader =
                 isset($options['use_simple_annotation_reader'])
                 ? (bool) $options['use_simple_annotation_reader']
