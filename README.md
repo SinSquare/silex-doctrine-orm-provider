@@ -3,6 +3,8 @@ Doctrine ORM provider for Silex 2.x framework
 
 [![Build Status](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider.svg?branch=master)](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880/big.png)](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880)
+
 Installation
 ============
 
