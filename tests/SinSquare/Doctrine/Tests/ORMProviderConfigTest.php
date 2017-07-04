@@ -76,13 +76,20 @@ class ORMProviderConfigTest extends BaseORMProviderTest
 
         $em1 = $this->application['doctrine.orm.em'];
         $em2 = $this->application['doctrine.orm.ems']['default'];
-        $em3 = $this->application['doctrine.orm.ems']['other_em'];
+        $em3 = $this->application['doctrine.orm.em.other_em'];
+        $em4 = $this->application['doctrine.orm.em.default'];
+        $em5 = $this->application['doctrine.orm.em.other_em'];
 
         $this->assertInstanceOf(EntityManagerInterface::class, $em1);
         $this->assertInstanceOf(EntityManagerInterface::class, $em2);
         $this->assertInstanceOf(EntityManagerInterface::class, $em3);
+        $this->assertInstanceOf(EntityManagerInterface::class, $em4);
+        $this->assertInstanceOf(EntityManagerInterface::class, $em5);
 
         $this->assertEquals($em1, $em2);
+        $this->assertEquals($em2, $em4);
+        $this->assertEquals($em3, $em5);
+
         $this->assertNotEquals($em1, $em3);
         $this->assertNotEquals($em2, $em3);
     }
