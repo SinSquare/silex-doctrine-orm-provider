@@ -150,3 +150,33 @@ $em = $application['doctrine.orm.ems']['named_em'];
 //OR
 $em = $application['doctrine.orm.em.named_em'];
 ```
+
+Using the validator
+=====
+
+```php
+    $entity = new Entity();
+    
+    //modify the entity
+
+    $validator = $application['validator'];
+    $errors = $validator->validate($entity);
+    if(count($errors)) {
+        //there was an error
+    }
+```
+
+Adding custom subscribers to the EntityManager
+=====
+
+If you need to attach subscriber to the EntityManager you should use the $application['doctrine.orm.em_factory.postinit'] as it runs only once after the fist call on the manager. 
+
+```php
+$application['doctrine.orm.em_factory.postinit'] = $this->application->protect(function ($name, $options, $manager) use ($application) {
+        
+    $eventManager = $manager->getEventManager();
+    $eventManager->addEventSubscriber($subscriber);
+
+    return $manager;
+});
+```
