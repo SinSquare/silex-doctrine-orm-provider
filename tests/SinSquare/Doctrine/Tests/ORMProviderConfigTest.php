@@ -70,6 +70,12 @@ class ORMProviderConfigTest extends BaseORMProviderTest
         );
     }
 
+    protected function tearDown()
+    {
+        parent::tearDown();
+        unset($this->config);
+    }
+
     public function testDefaultEntityManagerNoDefault()
     {
         $this->init($this->config);

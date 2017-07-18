@@ -6,10 +6,14 @@ use Silex\Provider\ValidatorServiceProvider;
 use SinSquare\Doctrine\DoctrineOrmValidatorProvider;
 use SinSquare\Doctrine\Tests\Resources\Entity\EntityOne;
 
-class ORMProviderValidatorTest extends BaseORMProviderTest
+class ORMProviderPostinitTest extends BaseORMProviderTest
 {
+    public static $called;
+
     protected function setUp()
     {
+        self::$called = false;
+
         $this->config = array(
             'doctrine.orm.options' => array(
                 'auto_generate_proxy_classes' => true,
@@ -59,50 +63,24 @@ class ORMProviderValidatorTest extends BaseORMProviderTest
         unset($this->config);
     }
 
-    public function testValidatorRegistration()
+    public function testPostinit()
     {
-        $validator = $this->application['validator'];
-        $this->assertNotNull($validator);
+        $app = $this->application;
+        $this->application['doctrine.orm.em_factory.postinit'] = $this->application->protect(function ($name, $options, $manager) use ($app) {
+            self::$called = true;
+            return $manager;
+        });
+
+        $em1 = $this->application['doctrine.orm.em'];
+
+        $this->assertEquals(self::$called, true);
     }
 
-    public function testFieldValidation()
+    public function testNoPostinit()
     {
-        $entity = new EntityOne();
+        $app = $this->application;
+        $em1 = $this->application['doctrine.orm.em'];
 
-        $validator = $this->application['validator'];
-
-        $errors = $validator->validate($entity);
-
-        $this->assertEquals(1, count($errors));
-
-        foreach ($errors as $error) {
-            $this->assertInstanceOf(\Symfony\Component\Validator\Constraints\NotNull::class, $error->getConstraint());
-        }
-    }
-
-    public function testUniqueValidation()
-    {
-        $em = $this->application['doctrine.orm.em'];
-        $route = sha1(uniqid());
-        $entity = new EntityOne();
-        $entity->setRoute($route);
-        $em->persist($entity);
-        $em->flush();
-        $id = $entity->getId();
-
-        $em->clear();
-        unset($entity);
-
-        $entity = new EntityOne();
-        $entity->setRoute($route);
-
-        $validator = $this->application['validator'];
-        $errors = $validator->validate($entity);
-
-        $this->assertEquals(1, count($errors));
-
-        foreach ($errors as $error) {
-            $this->assertInstanceOf(\Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity::class, $error->getConstraint());
-        }
+        $this->assertEquals(self::$called, false);
     }
 }

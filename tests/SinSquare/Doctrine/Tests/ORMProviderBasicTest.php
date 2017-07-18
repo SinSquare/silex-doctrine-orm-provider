@@ -7,6 +7,8 @@ use SinSquare\Doctrine\Tests\Resources\Entity\EntityTwo;
 
 class ORMProviderBasicTest extends BaseORMProviderTest
 {
+    private $config;
+    
     public static function setUpBeforeClass()
     {
         $loader = require __DIR__.'/../../../../vendor/autoload.php';
@@ -53,6 +55,12 @@ class ORMProviderBasicTest extends BaseORMProviderTest
             ),
         );
         $this->init($this->config);
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        unset($this->config);
     }
 
     public function testEntityOp1()

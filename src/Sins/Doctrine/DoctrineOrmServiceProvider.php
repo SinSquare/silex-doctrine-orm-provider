@@ -253,11 +253,19 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
         $app['doctrine.orm.em_factory'] = $app->protect(function ($name, $options) use ($app) {
             $config = $app['doctrine.orm.em.config']($name, $options);
 
-            return EntityManager::create(
+            $em = EntityManager::create(
                 $app['dbs'][$options['connection']],
                 $config,
                 $app['dbs.event_manager'][$options['connection']]
             );
+
+            return $app['doctrine.orm.em_factory.postinit']($name, $options, $em);
+
+        });
+
+        $app['doctrine.orm.em_factory.postinit'] = $app->protect(function ($name, $options, $manager) use ($app) {
+            //to be able to attach traits, etc
+            return $manager;
         });
 
         //initilazie config
