@@ -5,6 +5,8 @@ Doctrine ORM provider for Silex 2.x framework
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880/big.png)](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6fcf759cf1f84340ba44c37d1bcabd81)](https://www.codacy.com/app/SinSquare/silex-doctrine-orm-provider?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SinSquare/silex-doctrine-orm-provider&amp;utm_campaign=Badge_Grade)
+
 Installation
 ============
 
