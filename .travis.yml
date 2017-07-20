@@ -8,10 +8,12 @@ php:
 env:
   global:
     - DB_CONNECTION=sqlite
+    - CODACY_PROJECT_TOKEN=c0e230bf4c9b4c5dad55258d0b4c2dd5
 
 sudo: false
 
 install:
+- "composer require codacy/coverage --dev-master"
 - "composer require codeclimate/php-test-reporter --dev"
 - "composer update --no-interaction --prefer-stable"
 
@@ -21,3 +23,5 @@ script:
 after_script:
 - CODECLIMATE_REPO_TOKEN="90dde12098e3ca686fd3f09807b1036ca3b3e6c54c53205fe888cc53215f9b2e" vendor/bin/test-reporter --stdout > codeclimate.json
 - "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
+- php vendor/bin/codacycoverage clover build/logs/clover.xml
+
