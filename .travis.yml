@@ -12,6 +12,12 @@ env:
 sudo: false
 
 install:
-- composer update --no-interaction --prefer-stable;
+- "composer require codeclimate/php-test-reporter --dev"
+- "composer update --no-interaction --prefer-stable"
 
-script: vendor/bin/phpunit
+script:
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_script:
+- CODECLIMATE_REPO_TOKEN="90dde12098e3ca686fd3f09807b1036ca3b3e6c54c53205fe888cc53215f9b2e" vendor/bin/test-reporter --stdout > codeclimate.json
+- "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
