@@ -1,11 +1,12 @@
 Doctrine ORM provider for Silex 2.x framework
 =======
 
-[![Build Status](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider.svg?branch=master)](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider)
+| Code quality | Tests | Issues |
+|--------------|-------|--------|
+| [![SensioLabsInsight](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880/big.png)](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880) | [![Build Status](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider.svg?branch=master)](https://travis-ci.org/SinSquare/silex-doctrine-orm-provider) | [![Issue Count](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider/badges/issue_count.svg)](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider/issues) |
+| [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d24d9a01c994a5e940cdf64defa8cf5)](https://www.codacy.com/app/SinSquare/silex-doctrine-orm-provider?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SinSquare/silex-doctrine-orm-provider&amp;utm_campaign=Badge_Grade) | [![Test Coverage](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider/badges/coverage.svg)](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider/coverage) |     |
+| [![Code Climate](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider/badges/gpa.svg)](https://codeclimate.com/github/SinSquare/silex-doctrine-orm-provider) |   |   |
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880/big.png)](https://insight.sensiolabs.com/projects/73087558-245f-4598-826a-30e24a03e880)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6fcf759cf1f84340ba44c37d1bcabd81)](https://www.codacy.com/app/SinSquare/silex-doctrine-orm-provider?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SinSquare/silex-doctrine-orm-provider&amp;utm_campaign=Badge_Grade)
 
 Installation
 ============
@@ -109,7 +110,7 @@ The configuration scheme is similar to the one used in Smyfony [(read more here)
 
 - mapping: Currently only the annotation type is supported by default, but you can extend the functionality. Look for $app['doctrine.orm.mappingdriver.locator'] in the DoctrineOrmServiceProvider.
 
-- cache: The project uses SinSquare/silex-doctrine-cache-provider for cacheing, which is a wrapper for Doctrine Cache.
+- cache: The project uses SinSquare/silex-doctrine-orm-provider for cacheing, which is a wrapper for Doctrine Cache.
 
 * Using anonym cache:
 ```php
@@ -129,15 +130,15 @@ $application['doctrine.cache.options'] = array(
 );
 
 $application['doctrine.orm.options'] = array(
-	...
-	'result_cache_driver' => array(
+    ...
+    'result_cache_driver' => array(
         'name' => 'cache_1',
     ),
     ...
 );
 ```
 
-You can create new types of caches, please read how to [here](https://github.com/SinSquare/silex-doctrine-cache-provider);
+You can create new types of caches, please read how to [here](https://github.com/SinSquare/silex-doctrine-orm-provider);
 
 Retrieving the EntityManager
 =====
