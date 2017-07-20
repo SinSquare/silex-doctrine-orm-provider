@@ -260,7 +260,6 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
             );
 
             return $app['doctrine.orm.em_factory.postinit']($name, $options, $em);
-
         });
 
         $app['doctrine.orm.em_factory.postinit'] = $app->protect(function ($name, $options, $manager) use ($app) {

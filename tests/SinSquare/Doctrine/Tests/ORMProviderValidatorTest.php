@@ -88,7 +88,6 @@ class ORMProviderValidatorTest extends BaseORMProviderTest
         $entity->setRoute($route);
         $em->persist($entity);
         $em->flush();
-        $id = $entity->getId();
 
         $em->clear();
         unset($entity);

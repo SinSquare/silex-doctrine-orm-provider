@@ -8,7 +8,7 @@ use SinSquare\Doctrine\Tests\Resources\Entity\EntityTwo;
 class ORMProviderBasicTest extends BaseORMProviderTest
 {
     private $config;
-    
+
     public static function setUpBeforeClass()
     {
         $loader = require __DIR__.'/../../../../vendor/autoload.php';

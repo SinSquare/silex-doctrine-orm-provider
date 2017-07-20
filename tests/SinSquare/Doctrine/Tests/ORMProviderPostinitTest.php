@@ -2,9 +2,9 @@
 
 namespace SinSquare\Doctrine\Tests;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Silex\Provider\ValidatorServiceProvider;
 use SinSquare\Doctrine\DoctrineOrmValidatorProvider;
-use SinSquare\Doctrine\Tests\Resources\Entity\EntityOne;
 
 class ORMProviderPostinitTest extends BaseORMProviderTest
 {
@@ -66,19 +66,21 @@ class ORMProviderPostinitTest extends BaseORMProviderTest
     public function testPostinit()
     {
         $app = $this->application;
-        $this->application['doctrine.orm.em_factory.postinit'] = $this->application->protect(function ($name, $options, $manager) use ($app) {
+
+        $app['doctrine.orm.em_factory.postinit'] = $this->application->protect(function ($name, $options, $manager) use ($app) {
             self::$called = true;
+
             return $manager;
         });
 
-        $em1 = $this->application['doctrine.orm.em'];
+        $em1 = $app['doctrine.orm.em'];
+        $this->assertInstanceOf(EntityManagerInterface::class, $em1);
 
         $this->assertEquals(self::$called, true);
     }
 
     public function testNoPostinit()
     {
-        $app = $this->application;
         $em1 = $this->application['doctrine.orm.em'];
 
         $this->assertEquals(self::$called, false);

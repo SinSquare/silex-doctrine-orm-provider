@@ -4,6 +4,7 @@ cs_fixer_tmp*
 composer.lock
 composer.phar
 .php_cs*
+!.php_cs.dist
 project.*
 COMMANDS.md
 /var/
