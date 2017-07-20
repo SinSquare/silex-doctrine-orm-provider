@@ -83,6 +83,7 @@ class ORMProviderPostinitTest extends BaseORMProviderTest
     {
         $em1 = $this->application['doctrine.orm.em'];
 
+        $this->assertInstanceOf(EntityManagerInterface::class, $em1);
         $this->assertEquals(self::$called, false);
     }
 }
