@@ -289,7 +289,7 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
             $ems = new Container();
             foreach ($app['doctrine.orm.options']['entity_managers'] as $name => $options) {
                 $ems[$name] = function () use ($app, $name, $options) {
-                    return $app['doctrine.orm.em_factory']($name, $options);
+                    return $app['doctrine.orm.em.'.$name];
                 };
             }
 
