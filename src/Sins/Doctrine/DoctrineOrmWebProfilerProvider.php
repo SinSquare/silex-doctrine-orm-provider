@@ -18,7 +18,7 @@ class DoctrineOrmWebProfilerProvider implements ServiceProviderInterface
             });
             $app['twig.loader.filesystem'] = $app->extend('twig.loader.filesystem',
                 function (\Twig_Loader_Filesystem $twigLoaderFilesystem) {
-                    $twigLoaderFilesystem->addPath(__DIR__.'/../Resources/views/ORMWebProfiler', 'DoctrineWebProfilerProvider');
+                    $twigLoaderFilesystem->addPath(__DIR__.'/Resources/views/ORMWebProfiler', 'DoctrineWebProfilerProvider');
 
                     return $twigLoaderFilesystem;
                 }

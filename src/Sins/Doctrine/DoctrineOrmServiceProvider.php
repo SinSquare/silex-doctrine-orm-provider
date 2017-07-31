@@ -87,6 +87,8 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
                 if (empty($tmp['default_entity_manager'])) {
                     $tmp['default_entity_manager'] = $name;
                     $app['doctrine.orm.default'] = $name;
+                } else {
+                    $app['doctrine.orm.default'] = $tmp['default_entity_manager'];
                 }
             }
             $app['doctrine.orm.options'] = $tmp;
